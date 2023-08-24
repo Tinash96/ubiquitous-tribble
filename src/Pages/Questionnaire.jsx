@@ -1,66 +1,90 @@
-import React, { useState } from "react";
-import "../App.css";
+import React, { useState } from 'react';
+import '../App.css'; 
+import { db, FirebaseConfig } from '../components/FirebaseConfig'
+
 
 function Questionnaire() {
-    const [ratings, setRatings] = useState([0, 0, 0, 0]);
+  const [responses, setResponses] = useState([
+    { question: "The computer is the invention of the century", response: null },
+    { question: "The computer is the invention of the century", response: null },
+    { question: "The computer is the invention of the century", response: null },
+    { question: "The computer is the invention of the century", response: null },
+    { question: "The computer is the invention of the century", response: null },
+  ]);
 
-    const handleRatingChange = (index, rating) => {
-        const newRatings = [...ratings];
-        newRatings[index] = rating;
-        setRatings(newRatings);
-    };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log("Submitted ratings:", ratings);
-    };
 
-    const statements = [
-        "I like to eat out",
-        "I like to watch movies",
-        "I like to watch TV",
-        "I like to listen to the radio"
-    ];
+const handleResponseChange = async (index, value) => {
+    const updatedResponses = [...responses];
+    updatedResponses[index].response = value;
+    setResponses(updatedResponses);
+  
+    
+    try {
+      await db.collection('surveyResponses').add({
+        question: responses[index].question,
+        response: value,
+      });
+    } catch (error) {
+      console.error('Error adding response:', error);
+    }
+  };
+  
 
-    return (
-        <div className="survey-container">
-            <form onSubmit={handleSubmit}>
-                <table className="survey-table">
-                    <thead>
-                        <tr>
-                            <th>Options</th>
-                            <th>Strongly Agree</th>
-                            <th>Agree</th>
-                            <th>Neutral</th>
-                            <th>Disagree</th>
-                            <th>Strongly Disagree</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {statements.map((statement, index) => (
-                            <tr key={index}>
-                                <td>{statement}</td>
-                                {[5, 4, 3, 2, 1].map((rating) => (
-                                    <td key={rating}>
-                                        <label className="custom-radio">
-                                            <input
-                                                type="radio"
-                                                value={rating}
-                                                checked={ratings[index] === rating}
-                                                onChange={() => handleRatingChange(index, rating)}
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <button type="submit">Submit</button>
+
+
+  return (
+    <div className="survey-container">
+      <h2 className="survey-title">Questionnaire</h2>
+      <div className="questions-responses-container">
+        {responses.map((item, index) => (
+          <div className="question-response" key={index}>
+            <div className="question">{item.question}</div>
+            <form className="response-form">
+              <label className="response-option">
+                <input
+                  type="radio"
+                  value="agree"
+                  checked={item.response === 'agree'}
+                  onChange={() => handleResponseChange(index, 'agree')}
+                />
+                Agree
+              </label>
+
+              <label className="response-option">
+                <input
+                  type="radio"
+                  value="neutral"
+                  checked={item.response === 'neutral'}
+                  onChange={() => handleResponseChange(index, 'neutral')}
+                />
+                Neutral
+              </label>
+
+              <label className="response-option">
+                <input
+                  type="radio"
+                  value="disagree"
+                  checked={item.response === 'disagree'}
+                  onChange={() => handleResponseChange(index, 'disagree')}
+                />
+                Disagree
+              </label>
             </form>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+
+      <h2 className="responses-title">Responses</h2>
+      <ul className="responses-list">
+        {responses.map((item, index) => (
+          <li className="response-item" key={index}>
+            <strong>{item.question}:</strong> {item.response || 'No response'}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Questionnaire;
