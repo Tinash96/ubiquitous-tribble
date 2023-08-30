@@ -18,7 +18,7 @@ main{
 .side__bar{
     background-color: pink;
     color: white;
-    height: 700px;
+    height: 800px;
     width:200px;
     transition: all 0.5s;
 }
@@ -143,7 +143,7 @@ main{
   
 
 
-  /* Dashboard.css */
+  
 
 .container2 {
     font-family: Arial, sans-serif;
@@ -151,7 +151,7 @@ main{
     margin: 0 auto;
     padding: 30px;
     background-color: #f9f9f9;
-    margin-top: 50px;
+    margin-top: 70px;
   }
   
   .card {
