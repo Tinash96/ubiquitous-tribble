@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { db } from '../components/FirebaseConfig';
 import '../App.css';
@@ -56,7 +50,7 @@ function Dashboard() {
           </li>
         </ul>
       </div>
-      <p className="footer">Hover over response items for a highlight effect.</p>
+      
     </div>
   );
 }

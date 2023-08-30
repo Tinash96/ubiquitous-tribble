@@ -1,113 +1,4 @@
-// import React, { useState } from 'react';
-// import '../App.css'; 
-// import { db, FirebaseConfig } from '../components/FirebaseConfig'
 
-
-// function Questionnaire() {
-//   const [responses, setResponses] = useState([
-//     { question: "The computer is the invention of the century", response: null },
-//     { question: "The computer is the invention of the century", response: null },
-//     { question: "The computer is the invention of the century", response: null },
-//     { question: "The computer is the invention of the century", response: null },
-//     { question: "The computer is the invention of the century", response: null },
-//   ]);
-
-//   const [questions, setQuestions] = useState([]);
-
-//   useEffect(() => {
-//     const fetchQuestions = async () => {
-//       try {
-//         const snapshot = await db.collection('questions').get();
-//         const questionList = snapshot.docs.map((doc) => ({
-//           id: doc.id,
-//           text: doc.data().question,
-//         }));
-//         setQuestions(questionList);
-//       } catch (error) {
-//         console.error('Error fetching questions:', error);
-//       }
-//     };
-
-//     fetchQuestions();
-//   }, []);
-
-
-  
-
-// const handleResponseChange = async (index, value) => {
-//     const updatedResponses = [...responses];
-//     updatedResponses[index].response = value;
-//     setResponses(updatedResponses);
-  
-    
-//     try {
-//       await db.collection('surveyResponses').add({
-//         question: responses[index].question,
-//         response: value,
-//       });
-//     } catch (error) {
-//       console.error('Error adding response:', error);
-//     }
-//   };
-  
-
-
-
-//   return (
-//     <div className="survey-container">
-//       <h2 className="survey-title">Questionnaire</h2>
-//       <div className="questions-responses-container">
-//         {questions.map((item, index) => (
-//           <div className="question-response" key={index}>
-//             <div className="question">{item.question}</div>
-//             <form className="response-form">
-//               <label className="response-option">
-//                 <input
-//                   type="radio"
-//                   value="agree"
-//                   checked={item.response === 'agree'}
-//                   onChange={() => handleResponseChange(index, 'agree')}
-//                 />
-//                 Agree
-//               </label>
-
-//               <label className="response-option">
-//                 <input
-//                   type="radio"
-//                   value="neutral"
-//                   checked={item.response === 'neutral'}
-//                   onChange={() => handleResponseChange(index, 'neutral')}
-//                 />
-//                 Neutral
-//               </label>
-
-//               <label className="response-option">
-//                 <input
-//                   type="radio"
-//                   value="disagree"
-//                   checked={item.response === 'disagree'}
-//                   onChange={() => handleResponseChange(index, 'disagree')}
-//                 />
-//                 Disagree
-//               </label>
-//             </form>
-//           </div>
-//         ))}
-//       </div>
-
-//       <h2 className="responses-title">Responses</h2>
-//       <ul className="responses-list">
-//         {responses.map((item, index) => (
-//           <li className="response-item" key={index}>
-//             <strong>{item.question}:</strong> {item.response || 'No response'}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default Questionnaire;
 
 
 
@@ -142,7 +33,7 @@ function Questionnaire() {
   }, []);
 
   useEffect(() => {
-    // Calculate response counts
+    
     const counts = {
       agree: 0,
       neutral: 0,
@@ -170,7 +61,7 @@ function Questionnaire() {
 
     setResponses(updatedResponses);
 
-    // Save response to database
+    
     try {
       await db.collection('surveyResponses').add({
         questionId,
@@ -236,11 +127,7 @@ function Questionnaire() {
           </div>
         ))}
       </div>
-      {/* <div className="response-counts">
-        <p> {responseCounts.agree}</p>
-        <p> {responseCounts.neutral}</p>
-        <p> {responseCounts.disagree}</p>
-      </div> */}
+      
     </div>
   );
 }

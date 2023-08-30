@@ -1,114 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { db, FirebaseConfig } from '../components/FirebaseConfig'
+import { db } from '../components/FirebaseConfig';
 import firebase from 'firebase/compat/app'; 
 import { FaTrashAlt, FaEdit, FaSave } from 'react-icons/fa';
 
-const styles = {
-    container: {
-        fontFamily: 'Arial, sans-serif',
-        maxWidth: '600px',
-        margin: '0 auto',
-        padding: '30px',
-        border: '2px solid #ccc',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-        backgroundColor: '#f9f9f9',
-        marginTop:"30px"
-      },
-      title: {
-        fontSize: '28px',
-        marginBottom: '30px',
-        textAlign: 'center',
-      },
-      form: {
-        marginBottom: '30px',
-      },
-      input: {
-        width: '100%',
-        padding: '15px',
-        fontSize: '20px',
-        border: '2px solid #ccc',
-        borderRadius: '10px',
-      },
-      button: {
-        backgroundColor: '#007bff',
-        color: '#fff',
-        padding: '15px 30px',
-        fontSize: '20px',
-        borderRadius: '10px',
-        border: 'none',
-        cursor: 'pointer',
-        marginTop:'20px',
-        marginLeft:'150px',
-      },
-      submittedQuestion: {
-        marginTop: '30px',
-        padding: '20px',
-        backgroundColor: '#fff',
-        border: '2px solid #ccc',
-        borderRadius: '10px',
-      },
-
-      submit:{
-
-        textAlign:'center',
-        marginLeft:'60px',
-      },
-      questionList: {
-        marginTop: '20px',
-        listStyle: 'none',
-        padding: '0',
-      },
-      questionItem: {
-        marginBottom: '15px',
-        padding: '10px',
-        backgroundColor: '#fff',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      },
-      questionText: {
-        flex: '1',
-        marginRight: '10px',
-      },
-      buttonGroup: {
-        display: 'flex',
-        alignItems: 'center',
-      },
-      actionButton: {
-        backgroundColor: '#007bff',
-        color: '#fff',
-        padding: '8px 12px',
-        fontSize: '16px',
-        borderRadius: '5px',
-        border: 'none',
-        cursor: 'pointer',
-        marginLeft: '10px',
-      },
-      editSection: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '10px',
-      },
-      editInput: {
-        flex: '1',
-        padding: '8px',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-      },
-      saveButton: {
-        backgroundColor: '#28a745',
-        color: '#fff',
-        padding: '8px 12px',
-        fontSize: '16px',
-        borderRadius: '5px',
-        border: 'none',
-        cursor: 'pointer',
-        marginLeft: '10px',
-      },
-};
 
 function Create() {
   const [userQuestion, setUserQuestion] = useState('');
@@ -135,9 +29,6 @@ useEffect(() => {
   }, []);
 
 
-  // const handleEditInputChange = (event) => {
-  //   setEditedQuestion(event.target.value);
-  // };
 
   const handleInputChange = (event) => {
     setUserQuestion(event.target.value);
@@ -194,28 +85,6 @@ useEffect(() => {
   };
   
   
-  // const editQuestion = async (questionId) => {
-  //   try {
-  //     await db.collection('questions').doc(questionId).update({
-  //       question: editedQuestion,
-  //     });
-  //     console.log('Question edited successfully');
-  //   } catch (error) {
-  //     console.error('Error editing question:', error);
-  //   }
-  // };
-
-  // const saveEditedQuestion = async (questionId) => {
-  //   try {
-  //     await db.collection('questions').doc(questionId).update({
-  //       question: editedQuestion.text,
-  //     });
-  //     console.log('Question edited successfully');
-  //     setEditedQuestion({ id: '', text: '' });
-  //   } catch (error) {
-  //     console.error('Error saving edited question:', error);
-  //   }
-  // };
 
   return (
     <div style={styles.container}>
@@ -239,29 +108,7 @@ useEffect(() => {
           <p>{submittedQuestion}</p>
         </div>
       )}
-      {/* <div style={styles.submittedQuestion}>
-        <h2 className='submit'>List of questions</h2>
-        <ul>
-          {questions.map((question, index) => (
-            <li key={index}>{question.text}
-            <button onClick={() => deleteQuestion(question.id)}>Delete</button>
-            <button onClick={() => editQuestion(question.id)}>Edit</button>
-              {editedQuestion && question.id === editedQuestion.id && (
-                <div>
-                  <input
-                    type="text"
-                    value={editedQuestion.text}
-                    onChange={handleEditInputChange}
-                  />
-                  <button onClick={() => saveEditedQuestion(question.id)}>Save</button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div> */}
-
-
+     
 
 <div style={styles.submittedQuestion}>
   <h2 className='submit'>List of questions</h2>
@@ -313,6 +160,112 @@ useEffect(() => {
 export default Create;
 
 
+const styles = {
+  container: {
+      fontFamily: 'Arial, sans-serif',
+      maxWidth: '600px',
+      margin: '0 auto',
+      padding: '30px',
+      border: '2px solid #ccc',
+      borderRadius: '10px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+      backgroundColor: '#f9f9f9',
+      marginTop:"30px"
+    },
+    title: {
+      fontSize: '28px',
+      marginBottom: '30px',
+      textAlign: 'center',
+    },
+    form: {
+      marginBottom: '30px',
+    },
+    input: {
+      width: '100%',
+      padding: '15px',
+      fontSize: '20px',
+      border: '2px solid #ccc',
+      borderRadius: '10px',
+    },
+    button: {
+      backgroundColor: '#007bff',
+      color: '#fff',
+      padding: '15px 30px',
+      fontSize: '20px',
+      borderRadius: '10px',
+      border: 'none',
+      cursor: 'pointer',
+      marginTop:'20px',
+      marginLeft:'150px',
+    },
+    submittedQuestion: {
+      marginTop: '30px',
+      padding: '20px',
+      backgroundColor: '#fff',
+      border: '2px solid #ccc',
+      borderRadius: '10px',
+    },
+
+    submit:{
+
+      textAlign:'center',
+      marginLeft:'60px',
+    },
+    questionList: {
+      marginTop: '20px',
+      listStyle: 'none',
+      padding: '0',
+    },
+    questionItem: {
+      marginBottom: '15px',
+      padding: '10px',
+      backgroundColor: '#fff',
+      border: '1px solid #ccc',
+      borderRadius: '5px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    questionText: {
+      flex: '1',
+      marginRight: '10px',
+    },
+    buttonGroup: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    actionButton: {
+      backgroundColor: '#007bff',
+      color: '#fff',
+      padding: '8px 12px',
+      fontSize: '16px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer',
+      marginLeft: '10px',
+    },
+    editSection: {
+      display: 'flex',
+      alignItems: 'center',
+      marginTop: '10px',
+    },
+    editInput: {
+      flex: '1',
+      padding: '8px',
+      border: '1px solid #ccc',
+      borderRadius: '5px',
+    },
+    saveButton: {
+      backgroundColor: '#28a745',
+      color: '#fff',
+      padding: '8px 12px',
+      fontSize: '16px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer',
+      marginLeft: '10px',
+    },
+};
 
 
 
