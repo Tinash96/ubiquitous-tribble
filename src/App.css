@@ -16,7 +16,7 @@ main{
 }
 
 .side__bar{
-    background-color: pink;
+    background-color: #ff7ea7;
     color: white;
     height: 800px;
     width:200px;
@@ -30,7 +30,7 @@ main{
 }
 
 .logo{
-   font-size: 30px;
+   font-size: 100px;
 }
 
 .bars{
@@ -55,7 +55,7 @@ main{
 }
 
 .active{
-    background: lightskyblue;
+    background: #f9f9f9;
     color: #000;
 
 }
@@ -72,20 +72,15 @@ main{
 }
 
 
-
-
-
-
-
-
 .survey-container {
     max-width: 700px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 5px solid #ff7ea7;
     background-color: #f9f9f9;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 100px;
   }
   
   .survey-title {
@@ -119,7 +114,8 @@ main{
   .response-option {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
+    
   }
   
   .responses-title {
@@ -152,12 +148,15 @@ main{
     padding: 30px;
     background-color: #f9f9f9;
     margin-top: 70px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 5px solid #ff7ea7;
   }
   
   .card {
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
     padding: 20px;
     margin-bottom: 20px;
   }
@@ -199,11 +198,6 @@ main{
     border-radius: 5px;
   }
   
-  .footer {
-    text-align: center;
-    margin-top: 20px;
-    color: #777777;
-  }
   
   
   .response-item:hover {

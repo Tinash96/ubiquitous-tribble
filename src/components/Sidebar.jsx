@@ -3,7 +3,10 @@ import { FaTh,FaBars } from "react-icons/fa";
 import { FiClipboard } from "react-icons/fi";
 import { IoMdAddCircle } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import { GiMountaintop } from "react-icons/gi";
+
 import "../App.css";
+
 
 function Sidebar({ children }) {
     const [IsOpen,setIsOpen]= useState(false);
@@ -30,7 +33,8 @@ function Sidebar({ children }) {
         <div className="container">
             <div style={{width: IsOpen? " 300px": "50px"}}className="side__bar">
                 <div className="top__section">
-                    <h1 style={{display: IsOpen? "block": "none"}}className="logo">Logo</h1>
+                    <h1 style={{display: IsOpen? "block": "none"}}className="logo">
+                        < GiMountaintop /></h1>
                     <div style={{marginLeft: IsOpen? "50px" : "0px"}}className="bars">
                         <FaBars onClick={toggle}/>
                     </div>

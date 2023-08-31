@@ -111,7 +111,7 @@ useEffect(() => {
      
 
 <div style={styles.submittedQuestion}>
-  <h2 className='submit'>List of questions</h2>
+  <h2 className='sub'>List of questions</h2>
   <ul style={styles.questionList}>
     {questions.map((question) => (
       <li key={question.id} style={styles.questionItem}>
@@ -166,11 +166,11 @@ const styles = {
       maxWidth: '600px',
       margin: '0 auto',
       padding: '30px',
-      border: '2px solid #ccc',
+      border:' 3px solid #ff7ea7',
       borderRadius: '10px',
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
       backgroundColor: '#f9f9f9',
-      marginTop:"30px"
+      marginTop:"1px"
     },
     title: {
       fontSize: '28px',
@@ -184,11 +184,11 @@ const styles = {
       width: '100%',
       padding: '15px',
       fontSize: '20px',
-      border: '2px solid #ccc',
+      border:' 3px solid #ff7ea7',
       borderRadius: '10px',
     },
     button: {
-      backgroundColor: '#007bff',
+      backgroundColor: '#ff7ea7',
       color: '#fff',
       padding: '15px 30px',
       fontSize: '20px',
@@ -202,11 +202,11 @@ const styles = {
       marginTop: '30px',
       padding: '20px',
       backgroundColor: '#fff',
-      border: '2px solid #ccc',
+      border:' 3px solid #ff7ea7',
       borderRadius: '10px',
     },
 
-    submit:{
+    sub:{
 
       textAlign:'center',
       marginLeft:'60px',
@@ -235,7 +235,7 @@ const styles = {
       alignItems: 'center',
     },
     actionButton: {
-      backgroundColor: '#007bff',
+      backgroundColor: '#ff7ea7',
       color: '#fff',
       padding: '8px 12px',
       fontSize: '16px',
